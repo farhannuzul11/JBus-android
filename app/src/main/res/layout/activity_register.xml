@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".LoginActivity"> <!-- Add this line -->
+    tools:context=".RegisterActivity"> <!-- Add this line -->
     <!-- Fill the linear layout with some components-->
 
 <!--    <ImageView-->
@@ -92,7 +92,6 @@
             android:text="Register"
             android:textColor="@color/white"
             app:cornerRadius="21dp"
-
             />
 
 
