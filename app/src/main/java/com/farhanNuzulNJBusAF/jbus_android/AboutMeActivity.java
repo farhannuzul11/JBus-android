@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +51,68 @@ public class AboutMeActivity extends AppCompatActivity {
         topUp.setOnClickListener(v -> {
             handleTopUp();
         });
+
+        renterSection();
+
     }
+
+    private void moveActivity(Context ctx, Class<?> cls) {
+        Intent intent = new Intent(ctx, cls);
+        startActivity(intent);
+    }
+
+    private void renterSection() {
+        LinearLayout layout = findViewById(R.id.renter_layout);
+        TextView renter_s = new TextView(this);
+
+        renter_s.setTextColor(getResources().getColor(R.color.black));
+        renter_s.setTextSize(16);
+
+        if(LoginActivity.loggedAccount.company == null) {
+            TextView registerCompany = new TextView(this);
+            renter_s.setTextSize(20);
+            registerCompany.setTextColor(getResources().getColor(R.color.black));
+
+
+            renter_s.setText("You're not registered as a renter");
+            registerCompany.setText("Register Here");
+            registerCompany.setTypeface(null, Typeface.BOLD);
+
+            registerCompany.setOnClickListener(v -> {
+                moveActivity(this, RegisterRenterActivity.class);
+            });
+
+            LinearLayout.LayoutParams layout_p = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+
+            layout.addView(renter_s, layout_p);
+            layout.addView(registerCompany, layout_p);
+
+        } else {
+            Button manageBus = new Button(this);
+
+            renter_s.setText("You're already registered as renter");
+            manageBus.setText("Manage Bus");
+            manageBus.setTextSize(16);
+
+            LinearLayout.LayoutParams layout_p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+
+            manageBus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    moveActivity(mContext, ManageBusActivity.class);
+                }
+            });
+
+            layout.addView(renter_s, layout_p);
+            layout.addView(manageBus, layout_p);
+        }
+    }
+
+
 
     protected void handleTopUp() {
         String amount_handle = amount.getText().toString();

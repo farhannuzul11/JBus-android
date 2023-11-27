@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity"> <!-- Add this line -->
+    <!-- Fill the linear layout with some components-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView"-->
+    <!--        android:layout_width="127dp"-->
+    <!--        android:layout_height="92dp"-->
+    <!--        app:srcCompat="@drawable/jbus" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView4"-->
+    <!--        android:layout_width="130dp"-->
+    <!--        android:layout_height="51dp"-->
+    <!--        android:layout_marginBottom="20dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="JBus"-->
+    <!--        android:textSize="48sp" />-->
+
+    <LinearLayout
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="361dp"
+        android:layout_marginHorizontal="36dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/register_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif"
+            android:text="Register Your Company"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Input name, address, and phonenumber"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/CompanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Company Name"
+            android:inputType="text"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="Address"
+            android:inputType="text"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/PhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:inputType="number"
+            android:visibility="visible"
+            />
+
+        <Button
+            android:id="@+id/register_now"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/black"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:text="Register"
+            android:textColor="@color/white"
+            app:cornerRadius="21dp"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
