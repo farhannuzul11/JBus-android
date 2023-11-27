@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     protected void handleRegister() {
-    // handling empty field
+        // handling empty field
         String nameS = name.getText().toString();
         String emailS = email.getText().toString();
         String passwordS = password.getText().toString();
@@ -53,19 +53,21 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(mContext, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             return;
         }
+
+
         mApiService.register(nameS, emailS, passwordS).enqueue(new Callback<BaseResponse<Account>>() {
             @Override
             public void onResponse(Call<BaseResponse<Account>> call, Response<BaseResponse<Account>> response) {
-            if(!response.isSuccessful()){
-                Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
-                return;
+                if(!response.isSuccessful()){
+                    Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                BaseResponse<Account> res = response.body();
+
+                if(res.success) finish();
+                Toast.makeText(mContext,res.message,Toast.LENGTH_SHORT).show();
             }
-
-            BaseResponse<Account> res = response.body();
-
-            if(res.success) finish();
-            Toast.makeText(mContext,res.message,Toast.LENGTH_SHORT).show();
-        }
 
             @Override
             public void onFailure(Call<BaseResponse<Account>> call, Throwable t) {

@@ -20,26 +20,27 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView registerNow = null;
-    private Button loginButton;
-    private BaseApiService mApiService;
-    private Context mContext;
-    private EditText email, password;
+    private Button login = null;
     public static Account loggedAccount;
+    private Context mContext;
+    private BaseApiService mApiService;
+    private EditText email, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         registerNow = findViewById(R.id.register_now);
-        loginButton = findViewById(R.id.login_n);
+        login = findViewById(R.id.login_n);
 
         mContext = this;
         mApiService = UtilsApi.getApiService();
         email = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword);
+        login = findViewById(R.id.login_n);
 
         registerNow.setOnClickListener(v -> {moveActivity(this, RegisterActivity.class);});
-        loginButton.setOnClickListener(v -> {
+        login.setOnClickListener(v -> {
             handleLogin();});
 
         getSupportActionBar().hide();
