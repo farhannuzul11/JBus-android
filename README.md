@@ -31,19 +31,27 @@ AddBus: Users can conveniently add new buses through the "AddBus" feature, contr
 
 ## Screenshots
 1. Login
+   
     ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/5a611092-2b6a-49cf-88ca-313ccd2339dd)
 2. Register
+   
     ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/7a743c22-e9fc-4309-9cd5-28eb96374b5e)
 3. Main Activity
+
     ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/9564b4c1-81e8-4d47-b599-3ac0d75b2f70)
 4. About Me
+   
     ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/c19e576c-2a95-4f50-a5d7-ca8b3469a994)
 5. Top Up
+    
     ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/c3647138-5315-4e8e-b88c-e5aeb67ea83b)
 6. Manage Bus
+    
    ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/52af8c88-36be-4dd7-9327-25aa630b49e3)
 7. Register Renter
+
     ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/eb37da94-ed3e-4631-9cc5-f30dbd30eafe)
-8. AddBus
-    ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/8082406b-6782-403a-be58-57c85caabfba)
+9. AddBus
+ 
+   ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/8082406b-6782-403a-be58-57c85caabfba)
 
