@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
             btns[i]=new Button(this);
             btns[i].setBackgroundColor(getResources().getColor(android.R.color.transparent));
             btns[i].setText(""+(i+1));
-// ganti dengan warna yang kalian mau
             btns[i].setTextColor(getResources().getColor(R.color.black));
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(150,
                     150);

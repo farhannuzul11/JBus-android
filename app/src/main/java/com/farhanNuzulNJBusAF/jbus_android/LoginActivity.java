@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(v -> {
             handleLogin();});
 
-        getSupportActionBar().hide();
     }
 
     private void moveActivity(Context ctx, Class<?> cls){

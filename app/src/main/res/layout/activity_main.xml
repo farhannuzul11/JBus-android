@@ -28,7 +28,7 @@
         android:id="@+id/ListView_bus"
         android:layout_width="match_parent"
         android:layout_height="448dp"
-        tools:context=".MainActivity" />
+        tools:context=".BusScheduleActivity" />
 
     <LinearLayout
         android:id="@+id/pagination_footer"

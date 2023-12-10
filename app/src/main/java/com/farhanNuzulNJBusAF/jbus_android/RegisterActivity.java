@@ -39,12 +39,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerButton.setOnClickListener(v -> {
             handleRegister();
-            moveActivity(this, LoginActivity.class);
         });
     }
 
     protected void handleRegister() {
-        // handling empty field
         String nameS = name.getText().toString();
         String emailS = email.getText().toString();
         String passwordS = password.getText().toString();
@@ -53,7 +51,6 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(mContext, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             return;
         }
-
 
         mApiService.register(nameS, emailS, passwordS).enqueue(new Callback<BaseResponse<Account>>() {
             @Override
@@ -74,10 +71,12 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(mContext, "Problem with the server", Toast.LENGTH_SHORT).show();
             }
         });
+        moveActivity(this, LoginActivity.class);
     }
 
     private void moveActivity(Context ctx, Class<?> cls){
         Intent intent = new Intent (ctx, cls);
         startActivity(intent);
     }
+
 }

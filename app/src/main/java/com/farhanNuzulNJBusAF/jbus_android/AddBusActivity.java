@@ -1,7 +1,5 @@
 package com.farhanNuzulNJBusAF.jbus_android;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.farhanNuzulNJBusAF.jbus_android.model.BaseResponse;
 import com.farhanNuzulNJBusAF.jbus_android.model.Bus;
@@ -45,46 +46,22 @@ public class AddBusActivity extends AppCompatActivity {
     private CheckBox acCheckBox, wifiCheckBox, toiletCheckBox, lcdCheckBox;
     private CheckBox coolboxCheckBox, lunchCheckBox, baggageCheckBox, electricCheckBox;
     private List<Facility> selectedFacilities = new ArrayList<>();
+    private Button addBusButton;
 
-    AdapterView.OnItemSelectedListener busTypeOISL = new
-            AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
-                    selectedBusType = busType[position];
-                }
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {}
-            };
-    AdapterView.OnItemSelectedListener deptOISL = new
-            AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
-                    selectedDeptStationID = stationList.get(position).id;
-                }
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {}
-            };
-
-    AdapterView.OnItemSelectedListener arrOISL = new
-            AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
-                    selectedArrStationID = stationList.get(position).id;
-                }
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {}
-            };
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bus);
 
         mContext = this;
         mApiService = UtilsApi.getApiService();
+
+        busName = findViewById(R.id.bus_name);
+        capacity = findViewById(R.id.capacity);
+        price = findViewById(R.id.price);
+
+        busTypeSpinner = this.findViewById(R.id.bus_type_dropdown);
+        departureSpinner = this.findViewById(R.id.departure_dropdown);
+        arrivalSpinner = this.findViewById(R.id.arrival_dropdown);
 
         acCheckBox = findViewById(R.id.ac);
         wifiCheckBox = findViewById(R.id.wifi);
@@ -94,23 +71,60 @@ public class AddBusActivity extends AppCompatActivity {
         lunchCheckBox = findViewById(R.id.lunch);
         baggageCheckBox = findViewById(R.id.baggage);
         electricCheckBox= findViewById(R.id.electric_socket);
-        busName = findViewById(R.id.bus_name);
-        capacity = findViewById(R.id.capacity);
-        price = findViewById(R.id.price);
-
-        handleGetAllStation();
-        handleFacilities();
-
-        busTypeSpinner = this.findViewById(R.id.bus_type_dropdown);
-        departureSpinner = this.findViewById(R.id.departure_dropdown);
-        arrivalSpinner = this.findViewById(R.id.arrival_dropdown);
 
         ArrayAdapter adBus = new ArrayAdapter(this, android.R.layout.simple_list_item_1, busType);
         adBus.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         busTypeSpinner.setAdapter(adBus);
 
         busTypeSpinner.setOnItemSelectedListener(busTypeOISL);
+
+        addBusButton = findViewById(R.id.add_bus);
+
+        handleGetAllStation();
+
+        addBusButton.setOnClickListener(v -> {
+            handleFacilities();
+            handleAddBus();
+        });
+
     }
+    AdapterView.OnItemSelectedListener busTypeOISL = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+            // mengisi field selectedBusType sesuai dengan item yang dipilih
+            selectedBusType = busType[position];
+        }
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
+
+    AdapterView.OnItemSelectedListener deptOISL = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position,
+                                   long id) {
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+            // mengisi field selectedBusType sesuai dengan item yang dipilih
+            selectedDeptStationID = stationList.get(position).id;
+        }
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
+
+    AdapterView.OnItemSelectedListener arrOISL = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position,
+                                   long id) {
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+            // mengisi field selectedBusType sesuai dengan item yang dipilih
+            selectedArrStationID = stationList.get(position).id;
+        }
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
 
     private void moveActivity(Context ctx, Class<?> cls) {
         Intent intent = new Intent(ctx, cls);
@@ -138,7 +152,6 @@ public class AddBusActivity extends AppCompatActivity {
                 ArrayAdapter arrBus = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, stationList);
                 arrBus.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
                 arrivalSpinner.setAdapter(arrBus);
-
                 arrivalSpinner.setOnItemSelectedListener(arrOISL);
 
             }
@@ -166,7 +179,6 @@ public class AddBusActivity extends AppCompatActivity {
         String busNameS = busName.getText().toString();
         String capacityS = capacity.getText().toString();
         String priceS = price.getText().toString();
-        String busTypeS = busType.toString();
         if(busNameS.isEmpty() || capacityS.isEmpty() || priceS.isEmpty()) {
             Toast.makeText(mContext, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             return;
@@ -195,3 +207,4 @@ public class AddBusActivity extends AppCompatActivity {
         });
     }
 }
+

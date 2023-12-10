@@ -48,7 +48,6 @@ public class RegisterRenterActivity extends AppCompatActivity {
         startActivity(intent);
     }
     protected void handleRegisterRenter() {
-        // handling empty field
         String companyname_handle = companyname.getText().toString();
         String address_handle = address.getText().toString();
         String phonenumber_handle = phoneNumber.getText().toString();

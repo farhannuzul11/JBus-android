@@ -47,13 +47,11 @@ public class AboutMeActivity extends AppCompatActivity {
         balance.setText(Double.toString(LoginActivity.loggedAccount.balance));
 
 
-
         topUp.setOnClickListener(v -> {
             handleTopUp();
         });
 
         renterSection();
-
     }
 
     private void moveActivity(Context ctx, Class<?> cls) {
@@ -103,7 +101,7 @@ public class AboutMeActivity extends AppCompatActivity {
             manageBus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    moveActivity(mContext, ManageBusActivity.class);
+                    moveActivity(mContext, ManageBusActivity.class);
                 }
             });
 

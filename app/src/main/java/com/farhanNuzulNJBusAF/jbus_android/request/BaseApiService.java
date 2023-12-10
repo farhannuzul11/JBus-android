@@ -44,8 +44,8 @@ public interface BaseApiService {
             @Query("phoneNumber") String phoneNumber
     );
 
-    @GET("bus/getMyBus")
-    Call<List<Bus>> getMyBus (@Query("accountId") int accountId);
+    @GET("bus/getBus")
+    Call<List<Bus>> getBus (@Query("accountId") int accountId);
 
     @POST("bus/create")
     Call<BaseResponse<Bus>> create(

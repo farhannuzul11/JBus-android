@@ -116,7 +116,7 @@
                 android:id="@+id/top_up_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/my_secondary"
                 android:text="Top Up"
                 android:textColor="@color/white"
                 app:cornerRadius="21dp" />
