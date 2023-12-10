@@ -31,6 +31,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Activity class for adding a new bus to the system.
+ *
+ * <p>
+ * This activity allows the user to input details such as bus name, capacity, price, facilities, and type.
+ * It also provides a user interface to select departure and arrival stations.
+ * </p>
+ *
+ * <p>
+ * The user can specify facilities by checking checkboxes for options like AC, WIFI, etc.
+ * </p>
+ *
+ * @author Farhan Nuzul
+ * @version 1.0
+ */
 public class AddBusActivity extends AppCompatActivity {
     private BaseApiService mApiService;
     private Context mContext;
@@ -48,6 +63,11 @@ public class AddBusActivity extends AppCompatActivity {
     private List<Facility> selectedFacilities = new ArrayList<>();
     private Button addBusButton;
 
+    /**
+     * Initializes the activity.
+     *
+     * @param savedInstanceState A Bundle containing the data most recently supplied in onSaveInstanceState(Bundle).
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bus);
@@ -87,6 +107,9 @@ public class AddBusActivity extends AppCompatActivity {
             handleAddBus();
         });
 
+    /**
+    * Handles the selection of the bus type, departure, and arrival spinner.
+    */
     }
     AdapterView.OnItemSelectedListener busTypeOISL = new AdapterView.OnItemSelectedListener() {
         @Override
@@ -126,11 +149,20 @@ public class AddBusActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Moves to another activity.
+     *
+     * @param ctx The context of the current activity.
+     * @param cls The class of the activity to move to.
+     */
     private void moveActivity(Context ctx, Class<?> cls) {
         Intent intent = new Intent(ctx, cls);
         startActivity(intent);
     }
 
+    /**
+     * Retrieves all available stations from the server and populates the departure and arrival spinners.
+     */
     protected void handleGetAllStation() {
         // Make the GET request using Retrofit
         mApiService.getAllStation().enqueue(new Callback<List<Station>>() {
@@ -163,6 +195,9 @@ public class AddBusActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Handles the selection of facilities based on checkboxes.
+     */
     protected void handleFacilities() {
         selectedFacilities.clear(); // Clear the list before updating
         if (acCheckBox.isChecked()) { selectedFacilities.add(Facility.AC); }
@@ -175,6 +210,9 @@ public class AddBusActivity extends AppCompatActivity {
         if (electricCheckBox.isChecked()) { selectedFacilities.add(Facility.ELECTRIC_SOCKET); }
     }
 
+    /**
+     * Handles the addition of a new bus to the system.
+     */
     protected void handleAddBus() {
         String busNameS = busName.getText().toString();
         String capacityS = capacity.getText().toString();

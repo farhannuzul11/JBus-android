@@ -23,12 +23,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Activity class for displaying and managing user account details.
+ *
+ * <p>
+ * This activity displays user information such as username, email, and balance.
+ * It allows users to perform actions like topping up their balance and managing their status as a renter.
+ * </p>
+ *
+ * <p>
+ * Additionally, this activity handles the registration process for users who want to become renters.
+ * </p>
+ *
+ * @author Farhan Nuzul
+ * @version 1.0
+ */
 public class AboutMeActivity extends AppCompatActivity {
     private Context mContext;
     private BaseApiService mApiService;
     private Button topUp;
     private EditText amount;
     private TextView username, email, balance;
+
+    /**
+     * Initializes the activity.
+     *
+     * @param savedInstanceState A Bundle containing the data most recently supplied in onSaveInstanceState(Bundle).
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +75,20 @@ public class AboutMeActivity extends AppCompatActivity {
         renterSection();
     }
 
+    /**
+     * Moves to another activity.
+     *
+     * @param ctx The context of the current activity.
+     * @param cls The class of the activity to move to.
+     */
     private void moveActivity(Context ctx, Class<?> cls) {
         Intent intent = new Intent(ctx, cls);
         startActivity(intent);
     }
 
+    /**
+     * Sets up the renter section in the UI based on the user's renter status.
+     */
     private void renterSection() {
         LinearLayout layout = findViewById(R.id.renter_layout);
         TextView renter_s = new TextView(this);
@@ -111,7 +141,9 @@ public class AboutMeActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Handles the top-up functionality, allowing users to add funds to their account balance.
+     */
     protected void handleTopUp() {
         String amount_handle = amount.getText().toString();
         if (amount_handle.isEmpty()) {

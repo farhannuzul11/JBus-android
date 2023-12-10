@@ -20,6 +20,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The activity for managing buses associated with the user's account.
+ *
+ * <p>
+ * This activity allows users to view and manage their buses. It displays a list of
+ * buses that are associated with the user's account. Users can add new buses by
+ * clicking the "Add Bus" button. The list of buses is displayed using a custom
+ * adapter {@link MyBusArrayAdapter}.
+ * </p>
+ *
+ * <p>
+ * The user's buses are retrieved from the server using a Retrofit API call in
+ * the {@link #handleGetMyBus()} method. The response is then used to update the
+ * list of buses and notify the adapter of the changes.
+ * </p>
+ *
+ * @see MyBusArrayAdapter
+ * @see BaseApiService
+ * @see UtilsApi
+ */
 public class ManageBusActivity extends AppCompatActivity {
     private BaseApiService mApiService;
     private Context mContext;
@@ -54,11 +74,20 @@ public class ManageBusActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Move to another activity.
+     *
+     * @param ctx The context from which the activity is started.
+     * @param cls The class of the activity to start.
+     */
     private void moveActivity(Context ctx, Class<?> cls) {
         Intent intent = new Intent(ctx, cls);
         startActivity(intent);
     }
 
+    /**
+     * Handles the retrieval of buses associated with the user's account from the server.
+     */
     protected void handleGetMyBus() {
         // Make the GET request using Retrofit
         mApiService.getBus(LoginActivity.loggedAccount.id).enqueue(new Callback<List<Bus>>() {

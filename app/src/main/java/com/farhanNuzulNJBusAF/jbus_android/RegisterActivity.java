@@ -18,6 +18,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Activity for user registration.
+ *
+ * <p>
+ * This activity allows users to register a new account by providing a name, email, and password.
+ * The user's information is sent to the server using Retrofit. If the registration is successful,
+ * the user is redirected to the login screen.
+ * </p>
+ *
+ * @see LoginActivity
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private BaseApiService mApiService;
@@ -42,6 +53,15 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Handles the registration process.
+     *
+     * <p>
+     * Retrieves user input for name, email, and password. Sends a registration request to the server
+     * using Retrofit. Displays a toast message based on the server's response. If registration is
+     * successful, the user is redirected to the login screen.
+     * </p>
+     */
     protected void handleRegister() {
         String nameS = name.getText().toString();
         String emailS = email.getText().toString();
@@ -74,6 +94,12 @@ public class RegisterActivity extends AppCompatActivity {
         moveActivity(this, LoginActivity.class);
     }
 
+    /**
+     * Navigates to the specified activity.
+     *
+     * @param ctx The context from which the intent is created.
+     * @param cls The class of the activity to navigate to.
+     */
     private void moveActivity(Context ctx, Class<?> cls){
         Intent intent = new Intent (ctx, cls);
         startActivity(intent);

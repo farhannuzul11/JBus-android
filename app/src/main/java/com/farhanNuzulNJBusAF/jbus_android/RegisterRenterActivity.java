@@ -19,6 +19,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Activity for renter registration.
+ *
+ * <p>
+ * This activity allows renters to register by providing company name, address, and phone number.
+ * The renter's information is sent to the server using Retrofit. If the registration is successful,
+ * the user is redirected to the About Me screen.
+ * </p>
+ *
+ * @see AboutMeActivity
+ */
 public class RegisterRenterActivity extends AppCompatActivity {
 
     private BaseApiService mApiService;
@@ -43,10 +54,26 @@ public class RegisterRenterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Navigates to the specified activity.
+     *
+     * @param ctx The context from which the intent is created.
+     * @param cls The class of the activity to navigate to.
+     */
     private void moveActivity(Context ctx, Class<?> cls){
         Intent intent = new Intent (ctx, cls);
         startActivity(intent);
     }
+
+    /**
+     * Handles the renter registration process.
+     *
+     * <p>
+     * Retrieves user input for company name, address, and phone number. Sends a registration request
+     * to the server using Retrofit. Displays a toast message based on the server's response. If
+     * registration is successful, the user is redirected to the About Me screen.
+     * </p>
+     */
     protected void handleRegisterRenter() {
         String companyname_handle = companyname.getText().toString();
         String address_handle = address.getText().toString();

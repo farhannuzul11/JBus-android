@@ -13,9 +13,36 @@ import com.farhanNuzulNJBusAF.jbus_android.model.Bus;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Custom ArrayAdapter for displaying a list of Bus objects in a ListView.
+ *
+ * <p>
+ * This adapter is used to convert a list of Bus objects into a format that can be displayed
+ * in a ListView. It inflates a custom layout for each item in the list and sets the appropriate
+ * data for each item.
+ * </p>
+ *
+ * <p>
+ * The layout for each item is defined in the "bus_view.xml" file.
+ * </p>
+ *
+ * @see android.widget.ArrayAdapter
+ * @see android.view.View
+ * @see android.widget.TextView
+ * @see com.farhanNuzulNJBusAF.jbus_android.model.Bus
+ * @see R.layout#bus_view
+ * @see LayoutInflater#from(Context)
+ * @see LayoutInflater#inflate(int, ViewGroup, boolean)
+ * @version 1.0
+ */
 public class BusArrayAdapter extends ArrayAdapter<Bus> {
 
-    // invoke the suitable constructor of the ArrayAdapter class
+    /**
+     * Constructor for the BusArrayAdapter.
+     *
+     * @param context The current context.
+     * @param list    The list of Bus objects to be displayed.
+     */
     public BusArrayAdapter(@NonNull Context context, List<Bus> list) {
 
         // pass the context and arrayList for the super
@@ -23,6 +50,14 @@ public class BusArrayAdapter extends ArrayAdapter<Bus> {
         super(context, 0, list);
     }
 
+    /**
+     * Get a View that displays the data at the specified position in the data set.
+     *
+     * @param position    The position of the item within the adapter's data set.
+     * @param convertView The old view to reuse, if possible.
+     * @param parent      The parent that this view will eventually be attached to.
+     * @return A View corresponding to the data at the specified position.
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

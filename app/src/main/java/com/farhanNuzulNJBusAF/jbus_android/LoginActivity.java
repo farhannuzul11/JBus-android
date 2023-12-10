@@ -18,6 +18,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+/**
+ * Activity class for handling user login.
+ *
+ * <p>
+ * This activity allows users to log in to the JBUS application. It includes functionality for handling login requests,
+ * displaying relevant messages, and navigating to the main activity upon successful login.
+ * </p>
+ *
+ * @see androidx.appcompat.app.AppCompatActivity
+ * @version 1.0
+ */
 public class LoginActivity extends AppCompatActivity {
     private TextView registerNow = null;
     private Button login = null;
@@ -25,6 +37,14 @@ public class LoginActivity extends AppCompatActivity {
     private Context mContext;
     private BaseApiService mApiService;
     private EditText email, password;
+
+    /**
+     * Called when the activity is starting. This is where most initialization should go.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down,
+     *                           then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,16 +65,21 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Moves to another activity.
+     *
+     * @param ctx The context of the current activity.
+     * @param cls The class of the activity to move to.
+     */
     private void moveActivity(Context ctx, Class<?> cls){
         Intent intent = new Intent (ctx, cls);
         startActivity(intent);
     }
 
-    private void viewToast(Context ctx, String message){
-        Toast.makeText(ctx, message, Toast.LENGTH_SHORT).show();
-    }
-
-
+    /**
+     * Handles the login process by sending a login request to the server.
+     * Displays relevant messages based on the response.
+     */
     protected void handleLogin() {
         String emailNew = email.getText().toString();
         String passwordNew = password.getText().toString();

@@ -18,13 +18,42 @@ import com.farhanNuzulNJBusAF.jbus_android.model.Bus;
 
 import java.util.List;
 
+/**
+ * Custom ArrayAdapter for displaying buses in a list view.
+ *
+ * <p>
+ * This ArrayAdapter is designed to work with the {@link ManageBusActivity} to display a
+ * list of buses associated with the user's account. It overrides the {@link #getView(int, View, ViewGroup)}
+ * method to customize the appearance of each list item. Each item includes the bus name and a calendar
+ * icon that, when clicked, opens the {@link BusScheduleActivity}.
+ * </p>
+ *
+ * @see Bus
+ * @see ManageBusActivity
+ * @see BusScheduleActivity
+ */
 public class MyBusArrayAdapter extends ArrayAdapter<Bus> {
     private Context context;
+
+    /**
+     * Constructor for the MyBusArrayAdapter.
+     *
+     * @param context The context from which the adapter is created.
+     * @param list    The list of buses to be displayed.
+     */
     public MyBusArrayAdapter(@NonNull Context context, List<Bus> list) {
         super(context, 0, list);
         this.context = context;
     }
 
+    /**
+     * Overrides the getView method to customize the appearance of each list item.
+     *
+     * @param position    The position of the item within the adapter's data set.
+     * @param convertView The recycled view to populate.
+     * @param parent      The parent view that the returned view will be attached to.
+     * @return The View for the position in the AdapterView.
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
