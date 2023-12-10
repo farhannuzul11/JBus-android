@@ -4,12 +4,6 @@
 This program is one of the requirements for fulfilling the Object Oriented Programming assignment of the Department of Computer Engineering, University of Indonesia.
 
 
-
-
-## BACKGROUND
-This repository contains the source code for the JBus Android application. JBus serves as a comprehensive bus management and booking platform, enabling users to access bus schedules, make reservations, and manage their bus fleet. The Android app is a crucial component of the JBus ecosystem.
-
-
 ## BACKGROUND
 This repository contains the source code for the JBus Android application. JBus serves as a comprehensive bus management and booking platform, enabling users to access bus schedules, make reservations, and manage their bus fleet. The Android app is a crucial component of the JBus ecosystem.
 
@@ -50,7 +44,7 @@ AddBus: Users can conveniently add new buses through the "AddBus" feature, contr
    ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/52af8c88-36be-4dd7-9327-25aa630b49e3)
 7. Register Renter
 
-    ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/eb37da94-ed3e-4631-9cc5-f30dbd30eafe)
+    ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/5792eb3d-b947-46fa-9e8b-a72204d4e61f)
 9. AddBus
  
    ![image](https://github.com/farhannuzul11/JBus-android/assets/112792115/8082406b-6782-403a-be58-57c85caabfba)
